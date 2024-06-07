@@ -1,0 +1,101 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html,body{
+  background-color: #e2e2e2;
+}
+.login{
+  position: relative;
+}
+.login::after {
+  content: " ";
+  background-image: url("/images/1.png");
+  background-repeat: no-repeat;
+  background-position: top 0px right 0px;
+  background-size: contain; /* Adjusts the background image to cover the entire element */
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+.small,.medium,.large{
+  position: absolute;
+}
+.small {
+  width: 450px;
+  height: 450px;
+  background-color: #264eca;
+  border-radius: 50%;
+  bottom: -250px;
+  left: -250px;
+  z-index: 5;
+}
+.medium {
+  width: 560px;
+  height: 560px;
+  background-color: #2148c0;
+  border-radius: 50%;
+  bottom: -310px;
+  left: -310px;
+  z-index: 3;
+}
+.large {
+  width: 724px;
+  height: 724px;
+  background-color: #264eca;
+  border-radius: 50%;
+  bottom: -410px;
+  left: -410px;
+  z-index: 1;
+}
+
+
+tbody tr:nth-child(odd) .custom-bg{
+  background-color: #F8F9FA;
+}
+
+@media screen and (max-width:592px) {
+  .login::after {
+    content: " ";
+    background-image: url(/images/1.png);
+    background-repeat: no-repeat;
+    background-position: top 0px right 0px;
+    background-size: contain;
+    max-width: 400px;
+    max-height: 400px;
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 100%;
+    height: 100%;
+}
+.small {
+  width: 385px;
+  height: 385px;
+  background-color: #264eca;
+  border-radius: 50%;
+  bottom: -260px;
+  left: -260px;
+  z-index: 5;
+}
+.medium {
+  width: 480px;
+  height: 480px;
+  background-color: #2148c0;
+  border-radius: 50%;
+  bottom: -310px;
+  left: -310px;
+  z-index: 3;
+}
+.large {
+  width: 666px;
+  height: 666px;
+  background-color: #264eca;
+  border-radius: 50%;
+  bottom: -430px;
+  left: -430px;
+  z-index: 1;
+}
+}
