@@ -25,7 +25,7 @@ const writeJSONFile = (filePath, data) => {
 // Test api
 app.get("/", async(req,res)=>{
     console.log("HHHH");
-    res.send("Queue Implemented Successfully")
+    res.send("Test Successfully")
   });
 
 //   Register a user
@@ -34,7 +34,7 @@ app.post("/register", async(req,res)=>{
     const users = readJSONFile(usersFilePath);
     // Perform payload validation
     if(!firstName || !lastName || !email || !phone || !password){
-        res.send({success: false, data: "All Fields are mendatory"});
+        return res.send({success: false, data: "All Fields are mendatory"});
     }
 
     // perform email validation
@@ -69,7 +69,7 @@ app.post("/login", async(req,res)=>{
     req.body.email = email.trim();
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     let isUser = users.find(item=> item.email == email);
-    if (!emailRegex.test(req.body.email) || isUser) {
+    if (!emailRegex.test(req.body.email) || !isUser) {
         return res.send({success: false, data: "Please provide a valid email"});
     }
     // compare password
@@ -79,7 +79,7 @@ app.post("/login", async(req,res)=>{
         let token = jwt.sign({
             data: isUser.email
           }, aws_secret_key, { expiresIn: 60 * 60 });
-        res.send({success: true, data: {isUser, token}});
+        return res.send({success: true, data: {isUser, token}});
     }
 
     res.send({success: false, data: "Please provide a valid credentials"});
@@ -92,7 +92,7 @@ app.post("/add-user", async(req,res)=>{
     const users = readJSONFile(usersFilePath);
 
     if(!firstName || !lastName || !email){
-        res.send({success: false, data: "All Fields are mendatory except Phone number"})
+        return res.send({success: false, data: "All Fields are mendatory except Phone number"})
     }
 
     let user = users.push({
@@ -110,9 +110,9 @@ app.post("/get-user/:email", async(req,res)=>{
     const {email} = req.params;
     const users = readJSONFile(usersFilePath);
 
-    let user = users.find(item=> item.email == email);
+    let user = await users.find(item=> item.email == email);
     if(user){
-        res.send({success: false, data: user});
+        return res.send({success: true, data: user});
     }
     res.send({success: false, data: "No user found"});
 });

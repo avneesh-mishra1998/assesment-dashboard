@@ -1,15 +1,15 @@
 [
   {
     "firstName": "Test",
-    "lastName": "test",
+    "lastName": "Test",
     "email": "test@gmail.com",
     "phone": "0987654321",
-    "password": "111111"
+    "password": "$2b$10$tHp8/QP0xJbVLiGE87LUse4RBpXesAOL.EibgGxnritzyre4N1F6a"
   },
   {
-    "firstName": "Test",
-    "lastName": "test",
-    "email": "test@gmail.com",
+    "firstName": "Test-1",
+    "lastName": "test-1",
+    "email": "test1@gmail.com",
     "phone": "0987654321"
   }
 ]
